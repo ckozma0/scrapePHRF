@@ -24,20 +24,15 @@ soup = BeautifulSoup(resp.html.html, "html.parser")
 #table = soup.find("tr")
 table = soup.find_all('table')[2]
 
-#for sibling in table.tr.next_siblings:
-#    for td in sibling:
-#        print(td)
-
-#rows = soup.find_all("tr")
-
 rows = [str(row.text).strip() for row in table.find_all("tr")]
+print(rows)
+#sibs = [str(row.next_sibling.replace(u'\xa0', '')).strip() for row in table.find_all('td')]
+#print(sibs)
+#data = dict(zip(rows, sibs))
 
-sibs = [str(row.next_sibling.replace(u'\xa0', '')).strip() for row in table.find_all('td')]
+#data_model = {"boat": None, "rating": None}
+#print(data)
 
-data = dict(zip(rows, sibs))
-
-data_model = {"boat": None, "rating": None}
-print(data)
 #data_model["boat"] = data['boat']
 #data_model['rating'] = data['rating']
 
