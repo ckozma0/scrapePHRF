@@ -5,8 +5,10 @@ dfs = pd.read_html(url)
 #grab the third table on the page
 table = dfs[2]
 #get only the columns we want
-columns = table[[0,2]]
+table = table[[0,2]]
 #delete row 0, not part of the data
-columns = columns.drop(0)
+table = table.drop(0)
 
-print(columns)
+result_table = table.sort_values(by = [2])
+result_table.to_html('index.html')
+print(result_table)
